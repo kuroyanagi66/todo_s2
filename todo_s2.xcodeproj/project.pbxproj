@@ -14,6 +14,7 @@
 		D5059EAC2472CE1B005A1013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5059EAB2472CE1B005A1013 /* Assets.xcassets */; };
 		D5059EAF2472CE1B005A1013 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5059EAE2472CE1B005A1013 /* Preview Assets.xcassets */; };
 		D5059EB22472CE1B005A1013 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5059EB02472CE1B005A1013 /* LaunchScreen.storyboard */; };
+		D5059EBA2472CEA7005A1013 /* Task+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5059EB92472CEA7005A1013 /* Task+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		D5059EAE2472CE1B005A1013 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D5059EB12472CE1B005A1013 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5059EB32472CE1B005A1013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5059EB92472CEA7005A1013 /* Task+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				D5059EB32472CE1B005A1013 /* Info.plist */,
 				D5059EA62472CE1B005A1013 /* todo_s2.xcdatamodeld */,
 				D5059EAD2472CE1B005A1013 /* Preview Content */,
+				D5059EB92472CEA7005A1013 /* Task+Extensions.swift */,
 			);
 			path = todo_s2;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				D5059EA82472CE1B005A1013 /* todo_s2.xcdatamodeld in Sources */,
 				D5059EA32472CE1B005A1013 /* AppDelegate.swift in Sources */,
+				D5059EBA2472CEA7005A1013 /* Task+Extensions.swift in Sources */,
 				D5059EAA2472CE1B005A1013 /* ContentView.swift in Sources */,
 				D5059EA52472CE1B005A1013 /* SceneDelegate.swift in Sources */,
 			);
@@ -290,6 +294,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"todo_s2/Preview Content\"";
+				DEVELOPMENT_TEAM = Y9HCGNMS37;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = todo_s2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -309,6 +314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"todo_s2/Preview Content\"";
+				DEVELOPMENT_TEAM = Y9HCGNMS37;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = todo_s2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
