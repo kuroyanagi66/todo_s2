@@ -17,6 +17,9 @@ struct ContentView: View {
     @State private var testName: String = ""
     @Environment(\.managedObjectContext) var context
     @State private var selectionDate = Date()
+    @State private var selection1 = 1
+    @State private var task_num = 1
+    @State private var naiyou = "d"
     
     @FetchRequest(
         entity: Task.entity(),
@@ -36,21 +39,33 @@ struct ContentView: View {
                 set_details()
             }*/
 
-            
+ 
             HStack {
                 TextField("Task Name", text: $taskName)
-                
+       
 
                 Button(action: {
+                    if self.task_num == 1 {
+                        self.naiyou = "申し込み期限"}else{
+                        self.naiyou = "イベント"}
                     self.addTask()
                     self.taskName = ""
                 }) {
                     Text("Add Task")
                 }
             }.padding()
-            Form {
-                DatePicker("日時を選択", selection: $selectionDate)
-            }
+            
+            
+            Picker(selection: $task_num, label: Text("内容")){
+                Text("申し込み期限").tag(1)
+                Text("イベント").tag(2)
+                       
+                       }
+                
+
+                
+                DatePicker("Date", selection: $selectionDate)
+            
             /*
             HStack {
                   TextField("Test", text: $testName)
@@ -79,7 +94,7 @@ struct ContentView: View {
         let newdate = DateUtils.stringFromDate(date:selectionDate, format: "yyyy年MM月dd日 HH時mm分")
         
         newTask.id = UUID()
-        newTask.name = taskName + "\n" + newdate
+        newTask.name = taskName + "\n・" + naiyou + "\n・" + newdate
         
         newTask.isComplete = false
         newTask.dateAdded = Date()

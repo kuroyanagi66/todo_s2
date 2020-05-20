@@ -18,6 +18,7 @@ struct set_details: View {
             Picker(selection: $task_num, label: Text("内容")){
                 Text("申し込み期限")
                 Text("イベント")
+            
             }
             DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { /*@START_MENU_TOKEN@*/Text("Date")/*@END_MENU_TOKEN@*/ })
 
