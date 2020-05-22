@@ -20,6 +20,7 @@ struct ContentView: View {
     @State private var selection1 = 1
     @State private var task_num = 1
     @State private var naiyou = "d"
+
     
     @FetchRequest(
         entity: Task.entity(),
@@ -30,16 +31,11 @@ struct ContentView: View {
     var notCompletedTasks: FetchedResults<Task>
 
     var body: some View {
+        NavigationView{
+    
         VStack {
-            /*
-            Button(action: {self.showingDetail.toggle()} ) {
-                Text("+details")
-            }
-            .sheet(isPresented: $showingDetail){
-                set_details()
-            }*/
-
- 
+        
+           
             HStack {
                 TextField("Task Name", text: $taskName)
        
@@ -50,42 +46,46 @@ struct ContentView: View {
                         self.naiyou = "イベント"}
                     self.addTask()
                     self.taskName = ""
+           
                 }) {
                     Text("Add Task")
                 }
             }.padding()
             
-            
-            Picker(selection: $task_num, label: Text("内容")){
-                Text("申し込み期限").tag(1)
-                Text("イベント").tag(2)
-                       
-                       }
-                
 
-                
-                DatePicker("Date", selection: $selectionDate)
-            
-            /*
-            HStack {
-                  TextField("Test", text: $testName)
-           
-
-           
-              }.padding()
-            */
-            
             List {
+                
+Text("Content")
+                Picker(selection: $task_num, label: Text("内容").hidden()){
+                    Text("申し込み期限").tag(1)
+                    Text("イベント").tag(2)
+                    
+                           }
+                    
+
+                    Text("Date and time")
+                DatePicker("Date", selection: $selectionDate).labelsHidden()
+                
+                /*
                 ForEach(notCompletedTasks, id: \.self.id) { task in
                     Button(action: {
+                      
                         self.updateTask(task)
+                      
                     }) {
                         Text(task.name   ?? "No name given")
                         
                     }
-                }
+                }*/
             }
-        }
+             NavigationLink(destination: contents1()) {
+                 Text("Confirm task")
+                }                   .navigationBarTitle("To Do List")
+                
+               
+             }
+            }
+  
     }
     
     
@@ -147,3 +147,4 @@ class DateUtils {
         return formatter.string(from: date)
     }
 }
+
