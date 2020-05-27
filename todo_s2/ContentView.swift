@@ -20,11 +20,14 @@ struct ContentView: View {
     @State private var selection1 = 1
     @State private var task_num = 1
     @State private var naiyou = "d"
+    @State var isActiveSubView = false
+    @State var newTask2 = ""
 
     
     @FetchRequest(
         entity: Task.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \Task.dateAdded, ascending: true)],
+        
         predicate: NSPredicate(format: "isComplete == %@", NSNumber(value: false))
     )
     
@@ -45,25 +48,28 @@ struct ContentView: View {
                         self.naiyou = "申し込み期限"}else{
                         self.naiyou = "イベント"}
                     self.addTask()
-                    self.taskName = ""
-           
+                   
+                    let newdate = DateUtils.stringFromDate(date:self.selectionDate, format: "yyyy年MM月dd日 HH時mm分")
+                    self.newTask2 =  self.taskName + " (new added!)\n・" + self.naiyou + "\n・" + newdate
+            self.taskName = ""
                 }) {
                     Text("Add Task")
                 }
+ 
             }.padding()
             
 
             List {
                 
-Text("Content")
+Text("Content").font(.title)
                 Picker(selection: $task_num, label: Text("内容").hidden()){
                     Text("申し込み期限").tag(1)
                     Text("イベント").tag(2)
                     
-                           }
+                }.pickerStyle(SegmentedPickerStyle())
                     
 
-                    Text("Date and time")
+                    Text("Date and time").font(.title)
                 DatePicker("Date", selection: $selectionDate).labelsHidden()
                 
                 /*
@@ -77,11 +83,25 @@ Text("Content")
                         
                     }
                 }*/
+            
+                 Text(newTask2)
             }
-             NavigationLink(destination: contents1()) {
-                 Text("Confirm task")
+              // Text(newTask2)
+            
+         
+             NavigationLink(destination: contents1(),isActive: $isActiveSubView) {
+                 //Text("Confirm task")
+                EmptyView()
                 }                   .navigationBarTitle("To Do List")
                 
+            Button(action: {
+                
+                self.isActiveSubView.toggle()
+                self.newTask2 = ""
+            }) {
+                Text("Confirm task").font(.title)
+            }
+            
                
              }
             }
@@ -98,6 +118,7 @@ Text("Content")
         
         newTask.isComplete = false
         newTask.dateAdded = Date()
+      //  newTask.task_id = task_num
         
         do {
             try context.save()

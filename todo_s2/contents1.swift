@@ -19,6 +19,7 @@ struct contents1: View {
     @State private var selection1 = 1
     @State private var task_num = 1
     @State private var naiyou = "d"
+    @State var newTaskname = "nil"
  
     
     @FetchRequest(
@@ -39,24 +40,42 @@ struct contents1: View {
                 set_details()
             }*/
 
+
  
             HStack {
                 
             
-
-                
-
+            
+               
                 
                 List {
                     ForEach(notCompletedTasks, id: \.self.id) { task in
-                        Button(action: {
-                            self.updateTask(task)
-                        }) {
+                        
+                
+                    //self.newTaskname  = task.name ?? "No name given"
+                      
+                        HStack{
                             Text(task.name   ?? "No name given")
-                            
-                        }
+                     
+                            /*
+                             */
+                              Button(action: {
+                                     
+                                      self.updateTask(task)
+                                     
+                                     
+                                 }) {
+                                     
+                                     Text("")
+                             
+                                 }
+                             /*
+                             */
                     }
+                        
                     }
+                    
+                }
                 
   
                 
@@ -64,6 +83,7 @@ struct contents1: View {
         }
     }
     
+
     func addTask() {
         let newTask = Task(context: context)
         let newdate = DateUtils.stringFromDate(date:selectionDate, format: "yyyy年MM月dd日 HH時mm分")
@@ -94,6 +114,9 @@ struct contents1: View {
             print(error)
         }
     }
+    
+  
+    
 }
 
 struct contents1_Previews: PreviewProvider {
@@ -104,6 +127,7 @@ struct contents1_Previews: PreviewProvider {
        return contents1().environment(\.managedObjectContext, context)
     }
 }
+
 
 
 
